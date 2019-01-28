@@ -16,12 +16,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase myDatabase = this.openOrCreateDatabase("Users",MODE_PRIVATE,null);
 
         myDatabase.execSQL("CREATE TABLE IF NOT EXISTS users (name VARCHAR, age INT(3))");
-        myDatabase.execSQL("CREATE TABLE IF NOT EXISTS events (name VARCHAR, year INT(4))");
 
-//        myDatabase.execSQL("INSERT INTO users (name,age) VALUES ('Nick',28)");
-//        myDatabase.execSQL("INSERT INTO users (name,age) VALUES ('Eran',42)");
+//        myDatabase.execSQL("INSERT INTO users (name,age) VALUES ('John',12)");
+//        myDatabase.execSQL("INSERT INTO users (name,age) VALUES ('Dave',14)");
 
-        Cursor c= myDatabase.rawQuery("SELECT * FROM users",null);
+        Cursor c= myDatabase.rawQuery("SELECT * FROM users where name = 'John'",null);
 
         int nameIndex =c.getColumnIndex("name");
         int ageIndex =c.getColumnIndex("age");
